@@ -1,0 +1,89 @@
+.logo-image {
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+    margin-top: 20px;
+    margin-right: 20px;
+    float: left;
+}
+
+.toggle {
+    width: 42px;
+    height: 42px;
+    font-size: 24px;
+    text-decoration: none;
+    border: none;
+    position: relative;
+    background-color: transparent;
+}
+
+.header {
+    -webkit-border-align: center;
+    align-items: center;
+    display: flex;
+    margin-left: 12px;
+    vertical-align: baseline;
+    height: 64px;
+}
+
+.logo {
+    margin-left: 24px;
+    position: relative;
+    display: flex;
+}
+
+.logo-text {
+    display: inline flex;
+    padding: 25px 0px;
+    font-size: 20px;
+}
+
+.sidebar {
+    height: 100vh;
+    margin-left: 0px;
+    background-color: white;
+    border-right: 1px solid rgb(190, 200, 201);
+    color: black;
+    position: fixed;
+    top:0;
+    display: flex;
+    bottom: 0;
+    left: 0;
+    z-index: 200;
+    left: 0;
+    transition: width 300ms;
+    width: 68px;
+    overflow: hidden auto;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+}
+
+.isopen {
+    width: 256px;
+}
+
+.sidebar-element {
+    height: 44px;   
+    padding: 0px 0px 0px 22px;
+    position: relative;
+    align-items: center;
+    display: flex;
+    -webkit-box-align: center;
+    font-family: sans-serif;
+    color: rgb(32, 33, 36)
+}
+
+.sidebar-element:hover {
+    background-color: rgb(248, 249, 250);
+}
+
+.sidebar-element-chosen {
+    background-color: rgb(248, 249, 250);
+
+}
+
+.sidebar-element-text {
+    padding-left: 20px;
+    font-size: 20px;
+    line-height: 24px;
+}
