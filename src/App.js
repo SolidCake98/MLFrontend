@@ -14,7 +14,7 @@ class App extends Component {
     return (
       <div>
         <MainLayout />
-        <div className="container mt-3">
+        <div className=" marg">
           <Switch>
             <Route exact path={["/", "/home"]} component={Home} />
             <Route exact path="/login" component={Login} />

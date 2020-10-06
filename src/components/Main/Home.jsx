@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-
-import UserService from "../../services/UserService";
+import Upload from "./Upload";
 
 export default class Home extends Component {
 
@@ -12,33 +11,36 @@ export default class Home extends Component {
     };
   }
 
-  componentDidMount() {
-    UserService.getAllUsers().then(
-      response => {
-        if (response.data.length) {
-          this.setState({
-            content: response.data[0].username
-          });
-        }
-      },
-      error => {
-        this.setState({
-          content:
-            (error.response && error.response.data) ||
-            error.message ||
-            error.toString()
-        });
-      }
-    );
-  }
+  // componentDidMount() {
+  //   UserService.getAllUsers().then(
+  //     response => {
+  //       if (response.data.length) {
+  //         this.setState({
+  //           content: response.data[0].username
+  //         });
+  //       }
+  //     },
+  //     error => {
+  //       this.setState({
+  //         content:
+  //           (error.response && error.response.data) ||
+  //           error.message ||
+  //           error.toString()
+  //       });
+  //     }
+  //   );
+  // }
 
   render() {
     return (
+      <>
       <div className="container">
         <header className="jumbotron">
-          <h3>{this.state.content}</h3>
+          <h3>Контент</h3>
+          <Upload/>
         </header>
       </div>
+      </>
     );
   }
 }

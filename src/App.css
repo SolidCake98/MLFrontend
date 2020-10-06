@@ -26,6 +26,9 @@ a{
   text-decoration: none !important;
 } 
 
+body {
+  padding-top: 3.5rem;
+}
 
 button:active, button:focus {
   outline: none !important;
@@ -36,3 +39,6 @@ button::-moz-focus-inner {
 }
 
 
+.marg {
+  padding-left: 68px;
+}
