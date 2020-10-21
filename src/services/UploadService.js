@@ -9,9 +9,12 @@ class UploadService {
     upload(file, data, callback) {
         let form = new FormData();
         form.append('dataset', file);
-        form.append('name', data['name']);
-        form.append('title', data['title']);
-        form.append('description', data['description']);
+
+        const json = JSON.stringify(data);
+        const blob = new Blob([json], {
+            type: 'application/json',
+        });
+        form.append('document', blob);
 
         return axios
         .post(UPLOAD_URL, form, {headers: authHeader(), onUploadProgress: function(progressEvent){

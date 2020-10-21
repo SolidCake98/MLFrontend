@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Upload from "./Upload";
+import Upload from "../DatasetList/Upload"
 
 export default class Home extends Component {
 
@@ -37,7 +37,6 @@ export default class Home extends Component {
       <div className="container">
         <header className="jumbotron">
           <h3>Контент</h3>
-          <Upload/>
         </header>
       </div>
       </>

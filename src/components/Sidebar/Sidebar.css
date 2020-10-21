@@ -49,7 +49,7 @@
     display: flex;
     bottom: 0;
     left: 0;
-    z-index: 10000;
+    z-index: 1035;
     left: 0;
     transition: width 300ms;
     width: 68px;
@@ -77,8 +77,13 @@
     background-color: rgb(248, 249, 250);
 }
 
-.sidebar-element-chosen {
+.toggle:hover {
     background-color: rgb(248, 249, 250);
+    border-radius: 50%;
+}
+
+.sidebar-element-chosen {
+    background-color: rgb(238, 239, 240);
 }
 
 .sidebar-element-text {

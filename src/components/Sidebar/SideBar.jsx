@@ -3,7 +3,7 @@ import { Nav } from "react-bootstrap";
 import "./Sidebar.css";
 import logo from "../../logo640.png";
 import {Menu} from "@material-ui/icons";
-import SideBarItem from "./SideBarItem"
+import SideBarItems from "./SideBarItems"
 
 
 export default class SideBar extends React.Component {
@@ -52,7 +52,7 @@ export default class SideBar extends React.Component {
           </div>
 
         </div>
-        <SideBarItem />  
+        <SideBarItems />  
        </Nav>
        </>
       )
