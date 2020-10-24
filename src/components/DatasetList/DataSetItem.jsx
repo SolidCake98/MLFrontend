@@ -3,22 +3,37 @@ import { ListGroup } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import "./DataSet.css";
 
+import {Person, CalendarToday, Storage} from "@material-ui/icons";
+import { Container, Row, Col } from 'react-bootstrap';
+
 export default class DataSetItem extends Component {
 
   render() {
     return( 
 
-      <ListGroup.Item>
+      <ListGroup.Item className="disp">
         <Link to={{pathname: "/" + this.props.link}} className="link">
-          <h4>{this.props.title}</h4>
-          <div className="disp">{this.props.username}</div>
-          <div className="disp">{this.props.date}</div>
-          <div className="disp">{this.props.size}</div>
-          <div className="disp">{this.props.size_name}</div>
+
+          <Container >
+            <h4>{this.props.title}</h4>
+            <div className="c m">
+              <Person/> {this.props.username} 
+            </div>
+
+            <Row className="c">
+
+              <Col xs="2">
+                <CalendarToday /> {this.props.date}
+              </Col>
+
+              <Col xs="2">
+                <Storage /> {this.props.size} {this.props.size_name}
+              </Col>
+
+            </Row>
+          </Container>
         </Link>
       </ListGroup.Item>
-
-
     )
   }
 }

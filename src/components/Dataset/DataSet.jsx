@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import UserService from "../../services/UserService";
 import { Button } from "react-bootstrap";
+import DataSetDirList from "./DataSetDirList";
+import "./DataSet.css";
+
 
 const API_URL = "http://0.0.0.0:5000/api/v1/dataset/download/"
 
@@ -9,7 +12,10 @@ export default class DataSet extends Component {
   constructor(props) {
     super(props);
 
+    const args = this.props.match.params;
     this.state = {
+      username: args.user,
+      datasetName: args.dataset,
       dataset: null,
       error: null,
     };
@@ -37,7 +43,7 @@ export default class DataSet extends Component {
   }
 
   render() {
-    const{ dataset } = this.state;
+    const{ dataset, datasetName, username } = this.state;
     return (
       <>
       { dataset ? (
@@ -48,8 +54,13 @@ export default class DataSet extends Component {
             <Button>
               Download
             </Button>
-            </a>
+          </a>
+
+          <div style={{marginTop: "20px"}} className="block">
+            <DataSetDirList path= {`${username}/${datasetName}`} className="first-ul"/>
           </div>
+
+        </div>
       ) : (<div/>)}
       </>
     )

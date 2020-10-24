@@ -62,28 +62,27 @@ export default class DataSetList extends Component {
       <>
       <div className="container">
         <Upload show={showModal} onClose={() => this.onCloseModal()}/>
-
-        <Button variant="primary" onClick={this.onOpenModal}>
+        <Button variant="primary" onClick={this.onOpenModal} className="m-b">
           + New dataset
         </Button>
 
-        <header className="jumbotron">
-          <h3>Data Sets</h3>
-          <ListGroup variant="flush">
-            { this.state.datasets ? ( this.state.datasets.map((item) => ( 
-              <DataSetItem 
-                key={item.id}
-                id={item.id}
-                title={item.title} 
-                username={item.user.username}  
-                date={item.date_load} 
-                size={item.dataset_meta.size}
-                size_name={item.dataset_meta.size_name}
-                link={item.dataset_meta.path} 
-              />
-            ))) : (<div/>)}
-          </ListGroup>
-        </header>
+          
+        <h3>Datasets</h3>
+        <ListGroup variant="flush">
+          { this.state.datasets ? ( this.state.datasets.map((item) => ( 
+            <DataSetItem 
+              key={item.id}
+              id={item.id}
+              title={item.title} 
+              username={item.user.username}  
+              date={item.since_created} 
+              size={item.dataset_meta.size}
+              size_name={item.dataset_meta.size_name}
+              link={item.dataset_meta.path} 
+            />
+          ))) : (<div/>)}
+        </ListGroup>
+
       </div>
       </>
     );

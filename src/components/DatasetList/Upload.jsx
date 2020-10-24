@@ -3,7 +3,7 @@ import UploadService from "../../services/UploadService";
 import {Form, Modal, Button} from "react-bootstrap";
 import AuthService from "../../services/AuthService";
 import { withRouter } from 'react-router-dom';
-
+import "./DataSet.css";
 
 
 class UploadFiles extends Component {
@@ -80,15 +80,14 @@ class UploadFiles extends Component {
     },
     (error) => {
       console.log(error.response);
-    })
-    
-    // .catch(() => {
-    //   this.setState({
-    //     progress: 0,
-    //       message: "Could not upload the file!",
-    //       currentFile: undefined,
-    //   });
-    // });
+    })  
+    .catch(() => {
+      this.setState({
+        progress: 0,
+          message: "Could not upload the file!",
+          currentFile: undefined,
+      });
+    });
 
     this.setState({
       selectedFiles: undefined,
@@ -127,9 +126,14 @@ class UploadFiles extends Component {
           </Form>
 
 
-          <label className="btn btn-default">
-            <input type="file" onChange={this.onSelectFile} />
-          </label>
+          <input className="inputfile" type="file" id="file" onChange={this.onSelectFile} />
+
+          <label htmlFor="file" className="btn btn-secondary"> Select File </label>
+          {selectedFiles ? (
+            <span> {selectedFiles.name} </span>
+          ):(
+            <span> ... </span>
+          )} <br/>
 
           <button className="btn btn-success"
             disabled={!selectedFiles}

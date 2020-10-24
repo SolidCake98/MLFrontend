@@ -2,7 +2,32 @@
     color: black;
 }
 
-.disp {
-    display: inline-block;
-    margin-right: 10px;
+.disp:hover{
+    background-color: rgb(248, 249, 250);
+}
+
+.disp a:hover{
+    color: black;
+}
+
+.c {
+    color: gray;
+}
+
+.m-b {
+    margin-bottom: 20px;
+}
+
+.m {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
 }

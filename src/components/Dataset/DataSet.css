@@ -1,0 +1,40 @@
+.block {
+    overflow: hidden auto;
+    max-height: max(85vh, 742px);
+    flex-direction: column;
+    position: relative;
+    display: flex;
+    border-bottom: 1px solid rgb(236, 236, 237);
+    max-width: 226px;
+    margin-bottom: 40px;
+}
+
+.element {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 4px;
+    white-space: nowrap;
+}
+
+ul, ol {
+    list-style: none;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.first-ul{
+    padding: 0;
+    margin-left: 0;
+}
+
+.next-ul{
+    padding: 0; /* Убираем поля */
+    margin-left: 16px; /* Отступ слева */
+}

@@ -31,6 +31,15 @@ class UserService {
       responseType: 'blob',
     });
   }
+
+  readDirDataset(path, pos) {
+    return axios
+        .post(API_URL + "dataset/dir", {
+            path,
+            pos
+        })
+  }
+
 }
 
 export default new UserService();
