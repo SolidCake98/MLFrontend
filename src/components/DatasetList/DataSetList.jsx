@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import UserService from "../../services/UserService";
+import DataSetService from "../../services/DataSetService";
 import DataSetItem from "./DataSetItem";
 import {ListGroup, Button} from "react-bootstrap";
 import Upload from "./Upload";
@@ -36,7 +36,7 @@ export default class DataSetList extends Component {
 
   componentDidMount() {
 
-    UserService.getAllDatasets().then(
+    DataSetService.getAllDatasets().then(
       response => {
         if (response.data.length) {
           this.setState({

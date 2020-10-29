@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import UserService from "../../services/UserService";
+import DataSetService from "../../services/DataSetService";
 import { Button } from "react-bootstrap";
 import DataSetDirList from "./DataSetDirList";
 import "./DataSet.css";
+import DataSetFile from "./DataSetFile";
 
 
-const API_URL = "http://0.0.0.0:5000/api/v1/dataset/download/"
+const API_URL = "http://192.168.0.105:5000/api/v1/dataset/download/"
 
 export default class DataSet extends Component {
 
@@ -16,6 +17,8 @@ export default class DataSet extends Component {
     this.state = {
       username: args.user,
       datasetName: args.dataset,
+      pathToFile: "",
+      filename: "",
       dataset: null,
       error: null,
     };
@@ -23,7 +26,7 @@ export default class DataSet extends Component {
 
   componentDidMount() {
     const args = this.props.match.params;
-    UserService.getDataset(args.user, args.dataset).then(
+    DataSetService.getDataset(args.user, args.dataset).then(
       response => {
         if (response.data) {
           this.setState({
@@ -42,8 +45,15 @@ export default class DataSet extends Component {
     );
   }
 
+  clickOnFile = (filename, pathToFile) => {
+    this.setState({
+      pathToFile: pathToFile,
+      filename: filename,
+    })
+  }
+
   render() {
-    const{ dataset, datasetName, username } = this.state;
+    const{ dataset, datasetName, username, pathToFile, filename } = this.state;
     return (
       <>
       { dataset ? (
@@ -56,9 +66,28 @@ export default class DataSet extends Component {
             </Button>
           </a>
 
-          <div style={{marginTop: "20px"}} className="block">
-            <DataSetDirList path= {`${username}/${datasetName}`} className="first-ul"/>
+          <div style={{marginTop: "20px", position: "relative", overflowX: "hidden"}}>
+            <div style={{display: "flex"}}>
+              <div className="block">
+                <DataSetDirList path= {`${username}/${datasetName}`} className="first-ul" clickOnFile={this.clickOnFile}/>
+              </div>
+    
+              <div className="sub-block">
+                <div className="file-reader-block">
+                  <div className="header-block">
+                    <h5>
+                      { pathToFile ? (<>{filename}</>) : (<>Select file to preview</>)}
+                    </h5>
+                  </div>
+                  
+                  { pathToFile &&
+                    (<DataSetFile pathToFile={pathToFile} />) 
+                  }
+                </div>
+              </div>
+            </div>
           </div>
+          
 
         </div>
       ) : (<div/>)}

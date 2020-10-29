@@ -24,9 +24,17 @@ class UploadFiles extends Component {
 
       progress: 0,
       message: "",
+      username: null,
     };
   }
 
+  componentDidMount(){
+    const user = AuthService.getCurrentUser();
+    if(user)
+      this.setState({
+        username: user.username,
+      })
+  }
 
   onChangeTitle(e) {
     this.setState({
@@ -60,7 +68,6 @@ class UploadFiles extends Component {
       });
     } 
 
-
     const info = {
       name : this.state.name,
       title : this.state.title
@@ -74,9 +81,10 @@ class UploadFiles extends Component {
       });
 
       setTimeout(() => {
-        const curUser = AuthService.getCurrentUser();
-        this.props.history.push(`/${curUser.username}/${this.state.name}`);
+        // const curUser = AuthService.getCurrentUser();
+        this.props.history.push(`/${this.state.username}/${this.state.name}`);
       }, 1000);
+
     },
     (error) => {
       console.log(error.response);
@@ -103,12 +111,16 @@ class UploadFiles extends Component {
     } = this.state;
 
     return (
+
       <Modal
         show={this.props.show}
         onHide={() => {this.props.onClose()}}
         backdrop="static"
         keyboard={false}
       >
+        {this.props.show && !this.state.username && (
+          this.props.history.push("/login")        
+        )}
         <Modal.Header closeButton>
           <Modal.Title>Here you can upload your dataset</Modal.Title>
         </Modal.Header>
@@ -118,6 +130,7 @@ class UploadFiles extends Component {
             <Form.Group controlId="formBasicName">
               <Form.Label>Name</Form.Label>
               <Form.Control placeholder="Enter name for URI to your data" onChange={this.onChangeName}/>
+              <div>http://localhost/{this.state.username}/{this.state.name}</div>
             </Form.Group>
             <Form.Group controlId="formBasicTitle">
               <Form.Label>Title</Form.Label>

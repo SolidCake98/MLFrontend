@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UserService from '../../services/UserService';
+import DataSetService from '../../services/DataSetService';
 import DataSetDirItem from "./DataSetDirItem";
 
 export default class DataSetDirList extends Component {
@@ -14,7 +14,7 @@ export default class DataSetDirList extends Component {
   }
 
   componentDidMount() {
-    UserService.readDirDataset(this.props.path, 0).then(
+    DataSetService.readDirDataset(this.props.path, 0).then(
       response => {
         this.setState({
           dirList: response.data,
@@ -30,7 +30,7 @@ export default class DataSetDirList extends Component {
       loading:true,
     });
 
-    UserService.readDirDataset(this.props.path, this.state.dirList.next_pos).then(
+    DataSetService.readDirDataset(this.props.path, this.state.dirList.next_pos).then(
       response => {
         const lst = this.state.dirList;
         lst.next_pos = response.data.next_pos;
@@ -51,8 +51,7 @@ export default class DataSetDirList extends Component {
         this.state.dirList ? (
           <ul style={{display: "block"}} className={this.props.className}>
             {dirList.dir.map((item) => ( 
-              <DataSetDirItem type={item.type} name={item.name} path={this.props.path} key={item.id} className={this.props.className}/>
-              
+              <DataSetDirItem type={item.type} name={item.name} clickOnFile={this.props.clickOnFile} path={this.props.path} key={item.id} className={this.props.className}/>
             ))}
             {dirList.count > 0 &&(
               <div>

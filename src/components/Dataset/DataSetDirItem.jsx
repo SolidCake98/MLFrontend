@@ -10,8 +10,8 @@ export default class DataSetDirItem extends Component {
       is_open: false,
       is_loading: false,
 			types: {
-				'directory': <Folder />,
-				'file': <InsertDriveFile />
+				'directory': <Folder style={{ fontSize: 18 }}/>,
+				'file': <InsertDriveFile style={{ fontSize: 18 }}/>
       },
 		}
   }
@@ -21,7 +21,9 @@ export default class DataSetDirItem extends Component {
       this.setState({
         is_open: !this.state.is_open,
         is_loading: !this.state.is_open,
-      })
+      })  
+    } else {
+      this.props.clickOnFile(this.props.name, this.props.path + "/" + this.props.name);
     }
   }
 
@@ -37,8 +39,9 @@ export default class DataSetDirItem extends Component {
           
           {this.props.type === "directory" ? 
             (
-              is_loading ? (<> <span className="spinner-border spinner-border-sm"/> <FolderOpen/></>) :
-              is_open ?(<><KeyboardArrowDown/><FolderOpen/></>) : (<><KeyboardArrowRight/><Folder/></>)) :
+              is_loading ? (<> <span className="spinner-border spinner-border-sm"/> <FolderOpen style={{ fontSize: 24 }}/></>) :
+              is_open ?(<><KeyboardArrowDown style={{ fontSize: 24 }}/> <FolderOpen style={{ fontSize: 24 }}/></>) : 
+              (<><KeyboardArrowRight style={{ fontSize: 24 }}/><Folder style={{ fontSize: 24 }}/></>)) :
             (<>{types[this.props.type]} </>)
           }
 
@@ -46,7 +49,7 @@ export default class DataSetDirItem extends Component {
         </div>
 
         {is_open && (
-          <DataSetDirList path={this.props.path + "/" + this.props.name} className="next-ul" updateLoading={this.updateLoading}/>
+          <DataSetDirList path={this.props.path + "/" + this.props.name} clickOnFile={this.props.clickOnFile}  className="next-ul" updateLoading={this.updateLoading}/>
         )}
 
       </ul>

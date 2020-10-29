@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <div>
         <MainLayout />
-        <div style={{paddingTop: 40, paddingLeft: 36}}>
+        <div style={{paddingTop: 40, paddingBottom: 46, paddingLeft: 36}}>
           <Switch>
             <Route exact path={["/", "/home"]} component={Home} />
             <Route exact path={["/datasets"]} component={DataSetList} />
