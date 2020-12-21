@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import DataSetService from "../../services/DataSetService";
-import DataSetItem from "./DataSetItem";
-import {ListGroup, Button} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import Upload from "./Upload";
+import DataSetListComponent from "./DataSetListComponent";
+import DataSetListHeader from "./DataSetListHeader";
+import SearchHead from "./SearchHead";
 
 
 
@@ -14,10 +15,11 @@ export default class DataSetList extends Component {
     this.onCloseModal = this.onCloseModal.bind(this);
     this.onOpenModal = this.onOpenModal.bind(this)
 
-
     this.state = {
       showModal: false,
       datasets: null,
+      orderType: 'New',
+      selectType: 0,
       error: null,
     };
   }
@@ -34,30 +36,34 @@ export default class DataSetList extends Component {
     });
   }
 
-  componentDidMount() {
+  onChangeSort = (sort) => {
+    this.setState({
+      datasets: sort,
+    })
+  }
 
-    DataSetService.getAllDatasets().then(
-      response => {
-        if (response.data.length) {
-          this.setState({
-            datasets: response.data,
-          });
-          console.log(this.state.datasets);
-        }
-      },
-      error => {
-        this.setState({
-          error:
-            (error.response && error.response.data) ||
-            error.message ||
-            error.toString()
-        });
-      }
-    );
+  onChangeOrder = (order) => {
+    this.setState({
+      orderType: order,
+    })
+  }
+
+  onChangeSelect = (select) => {
+    this.setState({
+      selectType: select,
+    })
+  }
+
+  onSearch = (searchDataset) => {
+    this.setState({
+      datasets: searchDataset,
+      orderType: 'New',
+      selectType: 0,
+    })
   }
 
   render() {
-    const { showModal } = this.state;
+    const { showModal, orderType, selectType } = this.state;
     return (
       <>
       <div className="container">
@@ -66,22 +72,15 @@ export default class DataSetList extends Component {
           + New dataset
         </Button>
 
-          
         <h3>Datasets</h3>
-        <ListGroup variant="flush">
-          { this.state.datasets ? ( this.state.datasets.map((item) => ( 
-            <DataSetItem 
-              key={item.id}
-              id={item.id}
-              title={item.title} 
-              username={item.user.username}  
-              date={item.since_created} 
-              size={item.dataset_meta.size}
-              size_name={item.dataset_meta.size_name}
-              link={item.dataset_meta.path} 
-            />
-          ))) : (<div/>)}
-        </ListGroup>
+        <SearchHead onSearch={(searchDataset) => this.onSearch(searchDataset)}/>
+        <DataSetListHeader onSortSelect={(sort) => this.onChangeSort(sort)} 
+          orderType={orderType} 
+          selectType={selectType} 
+          onChangeOrder={(order) => this.onChangeOrder(order)}
+          onChangeSelect={(select) => this.onChangeSelect(select)}
+        />
+        <DataSetListComponent datasets={this.state.datasets} />
 
       </div>
       </>

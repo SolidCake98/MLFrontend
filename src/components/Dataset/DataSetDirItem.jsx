@@ -39,9 +39,9 @@ export default class DataSetDirItem extends Component {
           
           {this.props.type === "directory" ? 
             (
-              is_loading ? (<> <span className="spinner-border spinner-border-sm"/> <FolderOpen style={{ fontSize: 24 }}/></>) :
-              is_open ?(<><KeyboardArrowDown style={{ fontSize: 24 }}/> <FolderOpen style={{ fontSize: 24 }}/></>) : 
-              (<><KeyboardArrowRight style={{ fontSize: 24 }}/><Folder style={{ fontSize: 24 }}/></>)) :
+              is_loading ? (<> <span className="spinner-border spinner-border-sm"/> <FolderOpen style={{ fontSize: 18 }}/></>) :
+              is_open ?(<><KeyboardArrowDown style={{ fontSize: 18 }}/> <FolderOpen style={{ fontSize: 18 }}/></>) : 
+              (<><KeyboardArrowRight style={{ fontSize: 18 }}/><Folder style={{ fontSize: 18 }}/></>)) :
             (<>{types[this.props.type]} </>)
           }
 

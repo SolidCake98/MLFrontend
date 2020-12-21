@@ -27,6 +27,10 @@ export default class DataSetItem extends Component {
               </Col>
 
               <Col xs="2">
+               {this.props.file_types}
+              </Col>
+
+              <Col xs="2">
                 <Storage /> {this.props.size} {this.props.size_name}
               </Col>
 

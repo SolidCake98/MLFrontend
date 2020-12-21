@@ -1,0 +1,25 @@
+.flex{
+    display: flex;
+    justify-content: left;
+}
+
+.column-flex{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 120px;
+    flex-wrap: nowrap;
+}
+
+
+.el{
+    margin-right: 20px;
+}
+
+.margin-top{
+    margin-top: 20px;
+}
+
+.tex{
+    line-height: 30px;
+}

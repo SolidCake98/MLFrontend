@@ -1,35 +1,50 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {Home, Assessment, Grain} from "@material-ui/icons";
+import {Home, Assessment, Grain, SupervisorAccount} from "@material-ui/icons";
+import AuthService from "../../services/AuthService";
 
 export default class SideBarItems extends React.Component {
 
   constructor(props) {
     super(props);
+
+    let tMenu = [
+      {
+        id: 1,
+        element: <Home/>,
+        text: "Home",
+        link: "/",
+      },
+      {
+        id: 2,
+        element: <Assessment/>,
+        text: "Data",
+        link: "/datasets",
+
+      },
+      {
+        id: 3,
+        element: <Grain/>,
+        text: "Model",
+        link: "/",
+      },
+    ];
+
+    let user = AuthService.getCurrentUser();
+    if (user && user['roles'].includes('admin')){
+      tMenu.push({
+          id: 4,
+          element: <SupervisorAccount/>,
+          text: "Admin Panel",
+          link: "/admin",
+        });
+    }
+
     this.state = {
       selectedItem: 0,
-      menu: [
-        {
-          id: 1,
-          element: <Home/>,
-          text: "Home",
-          link: "/",
-        },
-        {
-          id: 2,
-          element: <Assessment/>,
-          text: "Data",
-          link: "/datasets",
-
-        },
-        {
-          id: 3,
-          element: <Grain/>,
-          text: "Model",
-          link: "/",
-        },
-      ]
-    }
+      menu: tMenu
+    };
+    
   }
 
   handleClick(id) {

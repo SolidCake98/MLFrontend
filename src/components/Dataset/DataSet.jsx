@@ -4,7 +4,8 @@ import { Button } from "react-bootstrap";
 import DataSetDirList from "./DataSetDirList";
 import "./DataSet.css";
 import DataSetFile from "./DataSetFile";
-
+import DataSetInfo from "./DataSetInfo";
+import DataSetRating from "./DataSetRating";
 
 const API_URL = "http://192.168.0.105:5000/api/v1/dataset/download/"
 
@@ -32,6 +33,7 @@ export default class DataSet extends Component {
           this.setState({
             dataset: response.data,
           });
+          console.log(response.data);
         }
       },
       error => {
@@ -65,6 +67,10 @@ export default class DataSet extends Component {
               Download
             </Button>
           </a>
+        
+          <DataSetInfo rating={dataset.rating ? dataset.rating : "None"} 
+            tags={dataset.tags}
+            size={dataset.dataset_meta.size} size_name={dataset.dataset_meta.size_name} dId={dataset.id} duId={dataset.user.id} />
 
           <div style={{marginTop: "20px", position: "relative", overflowX: "hidden"}}>
             <div style={{display: "flex"}}>
@@ -87,6 +93,8 @@ export default class DataSet extends Component {
               </div>
             </div>
           </div>
+
+          <DataSetRating ratings={dataset.user_ratings} duId={dataset.user.id} dId={dataset.id}/>
           
 
         </div>

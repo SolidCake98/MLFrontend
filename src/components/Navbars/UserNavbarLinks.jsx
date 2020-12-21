@@ -15,10 +15,11 @@ class UserNavbarLinks extends Component {
           </NavItem>
        
           <NavItem >
-            <Link to={"/login"} className="nav-link" onClick={(response) => {
+            <div className="nav-link" onClick={(response) => {
               AuthService.logout();
-              this.props.func(AuthService.getCurrentUser())
-            } }>Log Out</Link>
+              this.props.func(AuthService.getCurrentUser());
+              document.location.reload();
+            } }>Log Out</div>
           </NavItem>
       </Nav>
     )
