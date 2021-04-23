@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "./DataSet.css";
-import AuthService from "../../services/AuthService";
-import DataSetService from "../../services/DataSetService";
+import "./DataHead.css";
+import AuthService from "../../../services/AuthService";
+import DataSetService from "../../../services/DataSetService";
 import {Search, Close} from "@material-ui/icons";
 
 
@@ -37,7 +37,7 @@ export default class DataSetInfo extends Component {
   addTags = () => {
     if(this.state.addedTags.length !== 0){
       DataSetService.addTags(this.props.dId, this.state.addedTags).then(
-        response => {
+        _ => {
             this.setState( state => {
               const showTags = false;
               const datasetTags = [...state.datasetTags, ...state.addedTags];

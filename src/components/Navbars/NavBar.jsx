@@ -35,7 +35,7 @@ class NavLayout extends Component {
   render() {
     const { currentUser } = this.state;
     return (
-      <Navbar bg="light" variant="light" expand="lg" className="pad fixed-top">
+      <Navbar bg="dark" variant="dark" expand="lg" className="pad fixed-top">
         {currentUser ? (
           <UserNavbarLinks func={this.logOut} />
         ) : (

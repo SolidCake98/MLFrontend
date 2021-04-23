@@ -1,20 +1,22 @@
 import React, { Component } from "react";
 import DataSetService from "../../services/DataSetService";
-import { Button } from "react-bootstrap";
-import DataSetDirList from "./DataSetDirList";
-import "./DataSet.css";
-import DataSetFile from "./DataSetFile";
-import DataSetInfo from "./DataSetInfo";
+import DataSetDirList from "./Folders/DataSetDirList";
+import DataSetFile from "./Preview/DataSetFile";
+import DataHead from "./Header/DataHead";
+import DataSetInfo from "./Header/DataSetInfo";
 import DataSetRating from "./DataSetRating";
+import "./DataSet.css";
 
-const API_URL = "http://192.168.0.105:5000/api/v1/dataset/download/"
+
+const API_URL = "http://localhost:5000/api/v1/dataset/download/"
 
 export default class DataSet extends Component {
 
   constructor(props) {
     super(props);
-
     const args = this.props.match.params;
+    this.myRef = React.createRef();
+
     this.state = {
       username: args.user,
       datasetName: args.dataset,
@@ -27,6 +29,7 @@ export default class DataSet extends Component {
 
   componentDidMount() {
     const args = this.props.match.params;
+
     DataSetService.getDataset(args.user, args.dataset).then(
       response => {
         if (response.data) {
@@ -45,6 +48,7 @@ export default class DataSet extends Component {
         });
       }
     );
+
   }
 
   clickOnFile = (filename, pathToFile) => {
@@ -60,13 +64,13 @@ export default class DataSet extends Component {
       <>
       { dataset ? (
         <div className="container">
-          <h4>{dataset.title}</h4>
+
+          <DataHead tittle={dataset.title} username={username} size={dataset.dataset_meta.size} size_name={dataset.dataset_meta.size_name} 
+          date_load={dataset.date_load} since_create={dataset.since_created}
+          url_download={API_URL + dataset.user.username + "/" + dataset.name} 
+          path= {`${username}/${datasetName}`}/>
+      
           <div> {dataset.description} </div>
-          <a href={API_URL + dataset.user.username + "/" + dataset.name} download>
-            <Button>
-              Download
-            </Button>
-          </a>
         
           <DataSetInfo rating={dataset.rating ? dataset.rating : "None"} 
             tags={dataset.tags}
@@ -75,7 +79,7 @@ export default class DataSet extends Component {
           <div style={{marginTop: "20px", position: "relative", overflowX: "hidden"}}>
             <div style={{display: "flex"}}>
               <div className="block">
-                <DataSetDirList path= {`${username}/${datasetName}`} className="first-ul" clickOnFile={this.clickOnFile}/>
+                <DataSetDirList path= {`${username}/${datasetName}`} className="first-ul" clickOnFile={this.clickOnFile} filter="none"/>
               </div>
     
               <div className="sub-block">
@@ -95,8 +99,8 @@ export default class DataSet extends Component {
           </div>
 
           <DataSetRating ratings={dataset.user_ratings} duId={dataset.user.id} dId={dataset.id}/>
-          
-
+          <div ref={this.myRef}>
+          </div>
         </div>
       ) : (<div/>)}
       </>

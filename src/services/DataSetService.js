@@ -39,11 +39,12 @@ class DataSetService {
     return axios.post(DATASET_URL + "/tag", {word});
   }
 
-  readDirDataset(path, pos) {
+  readDirDataset(path, pos, filter) {
     return axios
       .post(DATASET_URL + "/dir", {
         path,
-        pos
+        pos,
+        filter
       })
   }
 

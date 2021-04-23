@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./DataSet.css";
+import "./DataPreview.css";
 
 export default class DataSetHeader extends Component {
 

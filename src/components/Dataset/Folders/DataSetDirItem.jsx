@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Folder, FolderOpen, InsertDriveFile, KeyboardArrowDown, KeyboardArrowRight } from '@material-ui/icons';
+import { FolderOutlined, FolderOpen, InsertDriveFileOutlined, KeyboardArrowDown, KeyboardArrowRight } from '@material-ui/icons';
 import DataSetDirList from './DataSetDirList';
 
 export default class DataSetDirItem extends Component {
@@ -10,8 +10,8 @@ export default class DataSetDirItem extends Component {
       is_open: false,
       is_loading: false,
 			types: {
-				'directory': <Folder style={{ fontSize: 18 }}/>,
-				'file': <InsertDriveFile style={{ fontSize: 18 }}/>
+				'directory': <FolderOutlined style={{ fontSize: 18 }}/>,
+				'file': <InsertDriveFileOutlined style={{ fontSize: 18 }}>Rounded</InsertDriveFileOutlined>
       },
 		}
   }
@@ -41,7 +41,7 @@ export default class DataSetDirItem extends Component {
             (
               is_loading ? (<> <span className="spinner-border spinner-border-sm"/> <FolderOpen style={{ fontSize: 18 }}/></>) :
               is_open ?(<><KeyboardArrowDown style={{ fontSize: 18 }}/> <FolderOpen style={{ fontSize: 18 }}/></>) : 
-              (<><KeyboardArrowRight style={{ fontSize: 18 }}/><Folder style={{ fontSize: 18 }}/></>)) :
+              (<><KeyboardArrowRight style={{ fontSize: 18 }}/><FolderOutlined style={{ fontSize: 18 }} /></>)) :
             (<>{types[this.props.type]} </>)
           }
 
@@ -49,7 +49,7 @@ export default class DataSetDirItem extends Component {
         </div>
 
         {is_open && (
-          <DataSetDirList path={this.props.path + "/" + this.props.name} clickOnFile={this.props.clickOnFile}  className="next-ul" updateLoading={this.updateLoading}/>
+          <DataSetDirList path={this.props.path + "/" + this.props.name} clickOnFile={this.props.clickOnFile}  className="next-ul" updateLoading={this.updateLoading} filter={this.props.filter}/>
         )}
 
       </ul>

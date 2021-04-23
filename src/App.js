@@ -18,13 +18,14 @@ class App extends Component {
     return (
       <div>
         <MainLayout />
-        <div style={{paddingTop: 40, paddingBottom: 46, paddingLeft: 36}}>
+        <div style={{paddingTop: 40, paddingBottom: 46, paddingLeft: 70}}>
           <Switch>
             <Route exact path={["/", "/home"]} component={Home} />
             <Route exact path={["/profile/:id"]} component={ProfilePublic} />
             <Route exact path={["/admin"]} component={AdminPanel} />
             <Route exact path={["/datasets"]} component={DataSetList} />
             <Route exact path="/:user/:dataset" component={DataSet} />
+            {/* <Route exact path="/:user/:dataset/:window" component={DataSet} /> */}
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
           </Switch>

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import DataSetService from "../../services/DataSetService";
+import DataSetService from "../../../services/DataSetService";
 import DataSetHeader from "./DataSetHeader";
 import DataSetTable from "./DataSetTable";
-import "./DataSet.css";
+import "./DataPreview.css";
 
 export default class DataSet extends Component {
 
@@ -33,7 +33,7 @@ export default class DataSet extends Component {
   }
 
   componentDidMount() {
-   this.updateFileInfo();
+    this.updateFileInfo();
   }
 
   updateFileInfo(){
@@ -44,7 +44,7 @@ export default class DataSet extends Component {
           fileInfo: response.data,
         });
       }
-    )
+    );
   }
 
   componentDidUpdate(prevProps) {
@@ -89,8 +89,10 @@ export default class DataSet extends Component {
 
       try {
         comp = this.state.type[fileInfo.type](fileInfo);
+          
+
       } catch {
-        comp = <> Can't prewiew this type of file</>
+        comp = <> Can't prewiew this type of file </>
       }
       
     }

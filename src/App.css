@@ -37,3 +37,63 @@ button:active, button:focus {
 button::-moz-focus-inner {
   border: 0 !important;
 }
+
+/* in info */
+.apply-button{
+  align-items: center;
+  background-color: rgb(32, 33, 36);
+  border-radius: 20px;
+  border: medium none;
+  cursor: pointer;
+  display: inline-flex;
+  height: 36px;
+  padding: 0px 24px;
+  width: fit-content;
+}
+
+/* in info */
+.apply-button:hover{
+  outline: none;
+  box-shadow: rgb(60 64 67 / 30%) 0px 2px 3px 0px, rgb(60 64 67 / 15%) 0px 6px 10px 4px;
+  background-color: rgb(32, 33, 36);
+  border: none;
+}
+
+/* in info */
+.text-in-apply-button{
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+
+.white-apply-button {
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid rgb(189, 193, 198);
+  transition: all 0.3s ease 0s;
+  border-radius: 20px;
+  cursor: pointer;
+  display: inline-flex;
+  height: 36px;
+  padding: 0px 24px;
+}
+
+
+
+/* in info */
+.text-in-white-apply-button {
+  color: rgb(32, 33, 36);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+}
+
+.white-apply-button:hover {
+  outline: none;
+  box-shadow: none;
+  background-color: transparent;
+  border: 1px solid rgb(32, 33, 36);
+}

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import {Button} from "react-bootstrap";
 import Upload from "./Upload";
 import DataSetListComponent from "./DataSetListComponent";
 import DataSetListHeader from "./DataSetListHeader";
@@ -13,7 +12,7 @@ export default class DataSetList extends Component {
     super(props);
 
     this.onCloseModal = this.onCloseModal.bind(this);
-    this.onOpenModal = this.onOpenModal.bind(this)
+    this.onOpenModal = this.onOpenModal.bind(this);
 
     this.state = {
       showModal: false,
@@ -68,9 +67,11 @@ export default class DataSetList extends Component {
       <>
       <div className="container">
         <Upload show={showModal} onClose={() => this.onCloseModal()}/>
-        <Button variant="primary" onClick={this.onOpenModal} className="m-b">
-          + New dataset
-        </Button>
+        <button className="apply-button m-b" onClick={this.onOpenModal}>
+          <span className="text-in-apply-button">
+            + New data
+          </span>
+        </button>
 
         <h3>Datasets</h3>
         <SearchHead onSearch={(searchDataset) => this.onSearch(searchDataset)}/>
