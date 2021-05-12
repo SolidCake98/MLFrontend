@@ -1,0 +1,243 @@
+.split-panel {
+    max-height: 65vh;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    width: 100%;
+}
+
+.dataset__content-panel::-webkit-scrollbar {
+    width: 12px;
+}
+   
+.dataset__content-panel::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.dataset__content-panel::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.dataset__panels {
+    position: relative;
+    height: 100%;
+}
+
+.dataset__content-panel {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.data-table-sticky {
+    position: sticky;
+    z-index: 1;
+    top: 0px;
+    background-color: #fff;
+}
+
+.data-table__table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;;
+}
+
+.data-table__head-row {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0;
+    table-layout: fixed;
+}
+
+.dataset-table__column {
+    height: inherit;
+    vertical-align: middle;
+    padding: 0;
+}
+
+.data-table__head-cell {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    white-space: nowrap;
+    max-width: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+.data-table__head-cell__padding {
+    padding-left: 0;
+}
+
+.data-table__th {
+    font-weight: 700;
+    text-align: left;
+}
+
+.dataset-table__header-icon-table-count {
+    margin-top: 3px;
+    font-size: 18px;
+    width: 50px;
+    text-align: center;
+}
+
+.dataset-table__header {
+    height: 36px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.data-table__box {
+    width: 100%;
+    height: 100%;
+}
+
+.data-table__box_sticky-head {
+    overflow: visible;
+    position: relative;
+    z-index: 0;
+}
+
+.dataset-table__row {
+    width: 100%;
+    height: 36px;
+    font-size: 14px;
+}
+
+.dataset-table__row:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.data-table__td:first-child, .data-table__th:first-child {
+    padding-left: 0;
+}
+
+.data-table__td {
+    padding: 5px 10px;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* .clear:after {
+    content: '.';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+} */
+
+.data-table__td_align_center, .data-table__th_align_center {
+    text-align: center;
+}
+
+.aggregation-select {
+    display: inline-block;
+}
+
+.aggregation-select-measure {
+    background-color: rgba(2, 123, 243, 0.08);
+}
+
+.select-control-green {
+    background: rgba(59,201,53,0.1);
+}
+
+.select-control {
+    border: 1px solid transparent;
+    padding-right: 8px;
+}
+
+.select-control {
+    align-items: center;
+    position: relative;
+    padding-left: 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    height: 28px;
+}
+
+.textinput_normal {
+    width: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+    vertical-align: top;
+    position: relative;
+    height: 28px;
+    border: 1px solid transparent;
+
+}
+
+.textinput__control {
+    color: rgba(0, 0, 0, 0.85);
+    margin-left: 8px;
+    border: 0 solid transparent;
+    background: none;
+    vertical-align: top;
+    padding: 0;
+    outline: none;
+    height: 28px;
+    width: 100%;
+}
+
+.textinput_normal:hover {
+    border-width: 1px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.select-control {
+    border: 1px solid transparent;
+    padding-right: 8px;
+}
+
+.select-control:hover {
+    border-color: #ccc;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.select-control-green:hover {
+    background: rgba(59,201,53,0.1);
+}
+
+.dropdown-m {
+    flex-direction: column;
+    border: 1px solid rgb(235, 236, 237);
+    border-radius: 6px;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    transition: opacity .15s ease-in-out;
+}
+
+.select-item {
+    margin-top: 4px;
+    padding-right: 26px;
+    padding-left: 16px;
+    line-height: 28px;
+}
+
+.selected-item {
+    background-color: rgba(2, 123, 243, 0.08);
+}
+
+.select-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.selected-item:hover {
+    background-color: rgba(2, 123, 243, 0.08);
+}

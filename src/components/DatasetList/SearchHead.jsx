@@ -198,6 +198,7 @@ export default class SearchHead extends Component {
                       </>
                     )}
                   </div>
+                  
                   <div className="tag-apply-list">
                     <button className="apply-button" onClick={this.searchByTag}>
                       <span className="text-in-apply-button"> Apply </span>

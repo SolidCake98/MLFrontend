@@ -299,3 +299,40 @@
     position: relative;
     width: 100%;
 }
+
+.right-block-data {
+    width: 100%;
+    margin-left: 15px;
+    padding-left: 25px;
+    border-left: 1px solid rgb(236, 236, 237);
+}
+
+.added-file-to-dataset{
+    display: flex;
+    -moz-box-align: center;
+    align-items: center;
+    height: 32px;
+    border: 1px solid rgb(218, 220, 224);
+    border-radius: 4px;
+    background-color: transparent;
+    padding: 0px 12px;
+    white-space: nowrap;
+    margin-right: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    margin-top: 8px;
+    width: 100%;
+    padding-right: 5px;
+}
+
+.added-file-text{
+    color: rgb(32, 33, 36);
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    margin-right: 10px;
+    width: 80px;
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    white-space: nowrap;
+}

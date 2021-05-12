@@ -5,6 +5,8 @@ import DataSetFile from "./Preview/DataSetFile";
 import DataHead from "./Header/DataHead";
 import DataSetInfo from "./Header/DataSetInfo";
 import DataSetRating from "./DataSetRating";
+import ModalDatasetCreate from "./Header/ModalDatasetCreate";
+
 import "./DataSet.css";
 
 
@@ -17,6 +19,9 @@ export default class DataSet extends Component {
     const args = this.props.match.params;
     this.myRef = React.createRef();
 
+    this.onCloseModal = this.onCloseModal.bind(this);
+    this.onOpenModal = this.onOpenModal.bind(this);
+
     this.state = {
       username: args.user,
       datasetName: args.dataset,
@@ -24,8 +29,22 @@ export default class DataSet extends Component {
       filename: "",
       dataset: null,
       error: null,
+      showModal: false
     };
   }
+  
+  onOpenModal() {
+    this.setState({
+      showModal: true,
+    });
+  }
+
+  onCloseModal() {
+    this.setState({
+      showModal: false,
+    });
+  }
+
 
   componentDidMount() {
     const args = this.props.match.params;
@@ -59,16 +78,60 @@ export default class DataSet extends Component {
   }
 
   render() {
-    const{ dataset, datasetName, username, pathToFile, filename } = this.state;
+    const{ dataset, datasetName, username, pathToFile, filename, showModal } = this.state;
     return (
       <>
       { dataset ? (
         <div className="container">
 
-          <DataHead tittle={dataset.title} username={username} size={dataset.dataset_meta.size} size_name={dataset.dataset_meta.size_name} 
-          date_load={dataset.date_load} since_create={dataset.since_created}
-          url_download={API_URL + dataset.user.username + "/" + dataset.name} 
-          path= {`${username}/${datasetName}`}/>
+          <ModalDatasetCreate show={showModal} onClose={() => this.onCloseModal()} path={`${username}/${datasetName}`}/>
+
+          <DataHead 
+            tittle={dataset.title}
+            helpInfo={[username, dataset.dataset_meta.size + " " + dataset.dataset_meta.size_name]} 
+            
+            date_load={dataset.date_load} 
+            since_create={dataset.since_created}
+
+            hrefs={{
+              'Data': {
+                'active' : true,
+                'href' : "/"
+              },
+
+              'Datasets': {
+                'active' : false,
+                'href' : "/"
+              },
+
+              'Charts': {
+                'active' : false,
+                'href' : "/"
+              },
+
+              'Dashboards': {
+                'active' : false,
+                'href' : "/"
+              },
+            }}
+            
+            buttons={{
+              'Download': 
+                <a href={API_URL + dataset.user.username + "/" + dataset.name}>
+                  <button className="white-apply-button " style={{marginRight: 8}}>
+                    <span className="text-in-white-apply-button">
+                      Download
+                    </span>
+                  </button>
+                </a>,
+              'New dataset': 
+                <button className="apply-button" onClick={this.onOpenModal}>
+                  <span className="text-in-apply-button">
+                    New dataset
+                  </span>
+                </button>
+            }}
+          />
       
           <div> {dataset.description} </div>
         

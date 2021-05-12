@@ -1,0 +1,162 @@
+.columns {
+    position: relative;
+    height: calc(100vh - 150px);
+}
+
+.panel__chart {
+    display: flex;
+    flex: 1 1 0%;
+    height: 100%;
+    position: absolute;
+    outline: none;
+    overflow: hidden;
+    flex-direction: row;
+    left: 0px;
+    right: 0px;
+}
+
+.v-panel {
+    flex: 0 0 auto;
+    position: relative;
+    outline: none;
+}
+
+.chart-column {
+    height: 100%;
+    background-color: rgba(0, 0, 0, .04);
+    font-size: 15px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    /* color: rgba(0, 0, 0, .16); */
+    overflow-x: hidden;
+}
+
+.chart-column  .actions-container{
+    border-bottom: rgba(0, 0, 0, .1);
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.13;
+    letter-spacing: normal;
+    background: #fff;
+}
+
+.data-columns-container {
+    height: 100%;
+    overflow: hidden;
+    background: #fff;
+}
+
+.datasets-action-container {
+    top: 0;
+    position: sticky;
+    max-height: 50%;
+    overflow-y: auto;
+}
+
+.dataset-select {
+    min-height: 40px;
+}
+
+.datachart-select-item {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.datachart-wrapper {
+    overflow-y: auto;
+    height: calc(100% - 40px);
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.datachart-wrapper::-webkit-scrollbar {
+    width: 12px;
+}
+
+.datachart-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.datachart-wrapper::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, .15);
+}
+
+.datachart-subcontainer {
+    min-height: 115px;
+}
+
+.dimension-subheader {
+    padding: 16px 20px 0;
+    font-weight: 700;
+}
+
+.dnd-container {
+    min-height: 53px;
+    padding-top: 8px;
+}
+
+.dimension-item {
+    padding: 2px 20px;
+    margin: 0 0 5px;
+    height: 32px;
+    border-radius: 2px;
+    cursor: pointer;
+    vertical-align: middle;
+    line-height: 24px;
+    font-size: 15px;
+    overflow: hidden;
+}
+
+.ch-vertical {
+    width: 9px;
+    margin: 0 -4px;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    cursor: col-resize;
+}
+
+.dl-resizer {
+    background: rgba(0, 0, 0, .1);
+    z-index: 4;
+    box-sizing: border-box;
+    background-clip: padding-box;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    transition: border .15s linear;
+}
+
+.subcontainer {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    padding-top: 16px;
+    min-height: 90px;
+}
+
+.subheader {
+    margin: 0 20px -40px;
+}
+
+.placeholder-icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+    opacity: .5;
+}
+
+.drop-container {
+    margin: 2px;
+    border-radius: 4px;
+    padding: 48px 19px 12px;
+    min-height: 90px;
+    border: 1px solid transparent;
+}
+
+.over-drop {
+    border: 1px dashed rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.05);
+}

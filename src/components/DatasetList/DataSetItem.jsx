@@ -12,7 +12,7 @@ export default class DataSetItem extends Component {
     return( 
 
       <ListGroup.Item className="disp">
-        <Link to={{pathname: "/" + this.props.link}} className="link">
+        <Link to={{pathname: "/data/" + this.props.link}} className="link">
 
           <Container >
             <h4>{this.props.title}</h4>

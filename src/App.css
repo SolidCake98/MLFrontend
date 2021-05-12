@@ -3,6 +3,18 @@ label {
   margin-top: 10px;
 }
 
+body::-webkit-scrollbar {
+  width: 12px;
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.15);
+}
+
 .card-container.card {
   max-width: 350px !important;
   padding: 40px 40px;
@@ -89,6 +101,8 @@ button::-moz-focus-inner {
   font-size: 14px;
   line-height: 20px;
   font-weight: 700;
+  white-space: nowrap;
+
 }
 
 .white-apply-button:hover {

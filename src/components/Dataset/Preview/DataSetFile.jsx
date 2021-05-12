@@ -14,10 +14,10 @@ export default class DataSet extends Component {
       type: {
         'img': (data) => <img className="img-w-h text-in-block" alt="" src={data.data}/>,
         'csv': (data) => 
-        <div className="table">
-          <DataSetHeader header={data.header} />
-          <DataSetTable data={data.data.data} />
-        </div>,
+          <div className="table">
+            <DataSetHeader header={data.header} />
+            <DataSetTable data={data.data.data} />
+          </div>,
         'text': (data) =>
         <xmp className="text-in-block">
           {data.data}

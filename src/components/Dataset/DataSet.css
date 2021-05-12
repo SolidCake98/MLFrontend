@@ -81,6 +81,17 @@ ul, ol {
     overflow-x: auto;
 }
 
+.table::-webkit-scrollbar {
+    width: 12px;
+}
+   
+.table::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.table::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.15);
+}
 
 
 /*in info*/

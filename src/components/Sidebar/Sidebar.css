@@ -51,8 +51,8 @@
     left: 0;
     z-index: 1035;
     left: 0;
-    transition: width 300ms;
-    width: 68px;
+    transition: width 500ms;
+    width: 64px;
     overflow: hidden auto;
     -webkit-box-flex: 1;
     flex-grow: 1;

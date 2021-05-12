@@ -1,36 +1,18 @@
 import React, { Component } from "react";
 import "./DataHead.css";
-import ModalDatasetCreate from "./ModalDatasetCreate";
 
 export default class DataHead extends Component {
 
   constructor(props) {
     super(props);
 
-
-    this.onCloseModal = this.onCloseModal.bind(this);
-    this.onOpenModal = this.onOpenModal.bind(this);
-
     this.state = {
       width: 0,
-      height: 0,
-      showModal: false,
+      height: 0
     }
 
     this.ref = React.createRef();
     this.refChild = React.createRef();
-  }
-
-  onOpenModal() {
-    this.setState({
-      showModal: true,
-    });
-  }
-
-  onCloseModal() {
-    this.setState({
-      showModal: false,
-    });
   }
 
   componentDidMount() {
@@ -52,10 +34,9 @@ export default class DataHead extends Component {
   };
 
   render() {
-    const {width, height, showModal} = this.state;
+    const {width, height} = this.state;
     return (
       <>
-      <ModalDatasetCreate show={showModal} onClose={() => this.onCloseModal()} path={this.props.path}/>
       <div className="data-header-container">
         <div className="pageheader">
           <div className="data-header" ref={this.ref}>
@@ -77,14 +58,16 @@ export default class DataHead extends Component {
             
               </div>
               <div className="data-header-details">
+
                 <div className="data-header-col_wrapper">
                   <img className="data-header-owner-thumbnail" alt="profile" src="http://localhost:5000/api/v1/user/media/default"/>
-                  {this.props.username}
                 </div>
 
-                <div style={{marginLeft: 20}}>
-                  {this.props.size} {this.props.size_name}
-                </div>
+                {this.props.helpInfo.map((el, i) => (
+                  <div style={{marginRight: 20}} key={i}>
+                    {el}
+                  </div>
+                ))}
 
                 <div>
                   <time dateTime={this.props.date_load}>
@@ -104,46 +87,30 @@ export default class DataHead extends Component {
               <div className="overflow-bottom">
                 <nav className="page-header-nabbar">
                   <div className="page-header-nabbar_wrapper">
-                    <a href="/" className="page-header-links page-header-links-selected">
-                      <span>
-                        Data
-                      </span>
-                    </a>
-
-                    <a href="/" className="page-header-links">
-                      <span>
-                        Datasets
-                      </span>
-                    </a>
-
-                    <a href="/" className="page-header-links">
-                      <span>
-                        Charts
-                      </span>
-                    </a>
-
-                    <a href="/" className="page-header-links">
-                      <span>
-                        Dashboards
-                      </span>
-                    </a>
+                    
+                    {
+                      Object.keys(this.props.hrefs).map((key, index) => (
+                        <a href={this.props.hrefs[key].href}
+                        key={index} 
+                        className={this.props.hrefs[key].active ? "page-header-links page-header-links-selected" : "page-header-links"}>
+                          <span>
+                            {key}
+                          </span>
+                        </a>
+                      ))
+                    }
+                    
                   </div>
                 </nav>
               </div>
               </div>
+              
               <div className="page-header-buttons">
-                <a href={this.props.url_download}>
-                  <button className="white-apply-button " style={{marginRight: 8}}>
-                    <span className="text-in-white-apply-button">
-                      Download
-                    </span>
-                  </button>
-                </a>
-                <button className="apply-button" onClick={this.onOpenModal}>
-                  <span className="text-in-apply-button">
-                    New dataset
-                  </span>
-                </button>
+                { 
+                  Object.keys(this.props.buttons).map((key, index) => (
+                    this.props.buttons[key]
+                  ))
+                }
               </div>
             </div>
           </div>
