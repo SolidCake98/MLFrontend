@@ -34,20 +34,24 @@ export default class DataColumns extends Component {
     window.removeEventListener('resize', this.updateDimensions);
   }
 
-  onChangeColTitle(i, value) {
+  onChangeCol(i, value, attribute) {
     const cols = this.props.cols;
 
     let changedCols = this.state.changedCols;
 
     changedCols[i] = changedCols[i] ? changedCols[i] : Object();
-    changedCols[i]["name"] = value;
-    changedCols[i]["changed"] = cols[i].tittle !== value;
+    changedCols[i][attribute] = value;
 
+    if (attribute !== "tittle")
+      changedCols[i]["changed_" + attribute] = cols[i]["data_type_aggregation"][attribute].name !== value;
+    else
+      changedCols[i]["changed_" + attribute] = cols[i][attribute] !== value;
+
+    console.log(changedCols);
     this.setState({
       changedCols: changedCols
     });
   }
-
 
   render() {
     const {width} = this.state;
@@ -142,7 +146,7 @@ export default class DataColumns extends Component {
                     <DataColTableRow
                       el = {el}
                       key={i}
-                      onChangeColTitle = {(value) => (this.onChangeColTitle(i, value))}
+                      onChangeCol = {(value, attribute) => (this.onChangeCol(i, value, attribute))}
                       types = {this.props.types}
                     />
                   ))}

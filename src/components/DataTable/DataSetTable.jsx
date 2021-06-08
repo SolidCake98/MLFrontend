@@ -73,6 +73,13 @@ export default class DataSetTable extends Component {
             }}
 
             buttons={{
+              'Add field': 
+                <button className="white-apply-button " style={{marginRight: 8}} onClick={() => (console.log('create chart'))} key={0}>
+                  <span className="text-in-white-apply-button">
+                    Add field
+                  </span>
+                </button>,
+
               'Create chart': 
                 <button className="white-apply-button " style={{marginRight: 8}} onClick={() => (console.log('create chart'))} key={1}>
                   <span className="text-in-white-apply-button">

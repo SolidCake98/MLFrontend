@@ -149,9 +149,9 @@ export default class DataSetInfo extends Component {
             <div>
               Rating {this.props.rating}
             </div>
-            <div>
+            {/* <div>
               Size {this.props.size} {this.props.size_name}
-            </div>
+            </div> */}
             <div className="quick-info-tags">
               <div className="text-tags">
                 Tags

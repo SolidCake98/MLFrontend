@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { ScatterChart, XAxis, YAxis, ZAxis, CartesianGrid, Tooltip, ResponsiveContainer, Scatter } from 'recharts';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 // import * as d3 from 'd3';
 
 
 
 
-export default class DataColumns extends Component {
+export default class DataLineAreaChart extends Component {
 
   constructor(props) {
     super(props);
@@ -14,7 +14,7 @@ export default class DataColumns extends Component {
         'x': el,
         'x_label' : this.props.data.x.label[i],
         'y': this.props.data.y.data[i],
-        'y_label' : this.props.data.y.label[i]
+        'y_label' : this.props.data.y.label[i],
       })),
     }
     this.ref = React.createRef();
@@ -29,7 +29,7 @@ export default class DataColumns extends Component {
 
   render() {
     const {data} = this.state;
-
+    
     let getValX = (x) => {
       return this.props.data.x.categorical ? x.x : x.x_label;
     }
@@ -48,22 +48,23 @@ export default class DataColumns extends Component {
 
     return (
         <ResponsiveContainer width="100%" height="100%">
-          <ScatterChart
+          <AreaChart
             width={1200}
-            height={700}
+            height={800}
+            data={data}
           >
             <CartesianGrid  />
             
             <XAxis
               style={{fontSize: 12, fill: "#666"}}
+              padding={{left: 12}}
+              height={70}
               tickCount={lenT + 1}
               ticks={xTicks}
               type="number"
               label={<CustomXLabel
                 label={this.props.data.x.field}
               />}
-              height={80}
-              fill="white"
               dataKey={getValX}
               tick={
                 <CustomXAxisTick
@@ -72,29 +73,20 @@ export default class DataColumns extends Component {
                   indFormatter = {this.indFormatter}
                 />
               }
-              domain={['dataMin', 'dataMax']}
+              domain={['dataMin - 1', 'dataMax + 1']}
             />
 
-            <YAxis 
-              fill="white"
-              type="number"
-              label={<CustomYLabel
-                label={this.props.data.y.field}
-                />}
-              
-              dataKey={getValY}
-              domain={['dataMin', 'dataMax']}
+            <YAxis
+             
             />
             
-            <ZAxis range={[60,60]}/>
 
             <Tooltip content={
             <CustomizedTooltip
               labels = {[this.props.data.x.field, this.props.data.y.field]} 
             />} />
-            <Scatter  data={data} fill="rgb(77, 162, 241)" isAnimationActive={false}/>
-
-          </ScatterChart>
+            <Area dataKey={getValY}  fill="rgb(77, 162, 241)" isAnimationActive={false}/>
+          </AreaChart>
         </ResponsiveContainer>
     )
   }
@@ -125,14 +117,9 @@ const CustomXAxisTick = props => {
 
 const CustomXLabel = props => {
   return (
-    <text x={props.viewBox.width/2 + props.viewBox.x} y={props.viewBox.y+30} textAnchor="end" width={props.viewBox.width} style={props.style}>
+    <text x={props.viewBox.width/2 + props.viewBox.x} y={props.viewBox.y+30} textAnchor="start" width={props.viewBox.width} style={props.style}>
        <tspan > {props.label} </tspan>
     </text>
   )};
 
-const CustomYLabel = props => {
-  return (
-    <text  transform={`rotate(-90, ${props.viewBox.x+10 }, ${props.viewBox.height/2 + props.viewBox.y})`} x={props.viewBox.x+30} y={props.viewBox.height/2 + props.viewBox.y} textAnchor="end" width={props.viewBox.width} >
-        <tspan > {props.label} </tspan>
-    </text>
-  )};
+

@@ -20,12 +20,11 @@ export default class SideBarItems extends React.Component {
         element: <Assessment/>,
         text: "Data",
         link: "/datasets",
-
       },
       {
         id: 3,
         element: <Grain/>,
-        text: "Model",
+        text: "Charts",
         link: "/",
       },
     ];

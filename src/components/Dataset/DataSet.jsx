@@ -99,7 +99,7 @@ export default class DataSet extends Component {
                 'href' : "/"
               },
 
-              'Datasets': {
+              'Data tables': {
                 'active' : false,
                 'href' : "/"
               },
@@ -107,12 +107,7 @@ export default class DataSet extends Component {
               'Charts': {
                 'active' : false,
                 'href' : "/"
-              },
-
-              'Dashboards': {
-                'active' : false,
-                'href' : "/"
-              },
+              }
             }}
             
             buttons={{

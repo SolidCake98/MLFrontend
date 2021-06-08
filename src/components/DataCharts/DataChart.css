@@ -160,3 +160,37 @@
     border-radius: 4px;
     background: rgba(0, 0, 0, 0.05);
 }
+
+.chart-type {
+    opacity: 1 !important;
+    pointer-events: all !important;
+    top: 40px !important;
+}
+
+.aggregation-select {
+    display: inline-block;
+}
+
+.aggregation-select-measure {
+    background-color: rgba(2, 123, 243, 0.08);
+}
+
+.control-green {
+    background: rgba(59,201,53,0.2);
+}
+
+.control {
+    border: 1px solid transparent;
+    padding-right: 8px;
+}
+
+.control {
+    align-items: center;
+    position: relative;
+    padding-left: 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    height: 28px;
+    overflow-x: hidden;
+}

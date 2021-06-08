@@ -75,6 +75,7 @@ export default class DataColTableRow extends Component {
         showTypes: false
       });
     }
+    this.props.onChangeCol(type, "data_type");
   }
 
   onSelectAgg(agg) {
@@ -82,13 +83,14 @@ export default class DataColTableRow extends Component {
       selectedAgg: agg,
       showAggregations: false,
     });
+    this.props.onChangeCol(agg, "aggregation");
   }
 
   onTitleChange(e) {
     this.setState({
       value: e.target.value,
     });
-    this.props.onChangeColTitle(e.target.value);
+    this.props.onChangeCol(e.target.value, "tittle");
   }
 
   render() {

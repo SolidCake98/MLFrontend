@@ -17,6 +17,10 @@ class DataSetChartService {
       })
   }
 
+  getTypes() {
+    return axios.get(DATASETCHART_URL + "/type");
+  }
+
 }
 
 export default new DataSetChartService();

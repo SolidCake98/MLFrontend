@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import DataSetTableService from "../../services/DataSetTableService";
+import DataSetChartService from "../../services/DataSetChartService";
 // import DataHead from "../Dataset/Header/DataHead";
 import DataChartCols from "./DataChartCols";
 
@@ -11,7 +12,8 @@ export default class DataChart extends Component {
 
     this.state = {
       id: args.id,
-      dataTable: null
+      dataTable: null,
+      types: null
     };
   }
 
@@ -25,7 +27,26 @@ export default class DataChart extends Component {
           this.setState({
             dataTable: response.data,
           });
-          // console.log(response.data);
+          console.log(response.data);
+        }
+      },
+      error => {
+        this.setState({
+          error:
+            (error.response && error.response.data) ||
+            error.message ||
+            error.toString()
+        });
+      }
+    );
+
+    DataSetChartService.getTypes().then(
+      response => {
+        if (response.data) {
+          this.setState({
+            types: response.data,
+          });
+          console.log(response.data);
         }
       },
       error => {
@@ -41,10 +62,10 @@ export default class DataChart extends Component {
 
 
   render() {
-    const {dataTable} = this.state;
+    const {dataTable, types} = this.state;
     return (
       <>
-      { dataTable  ? (
+      { dataTable && types ? (
         <div>
           {/* <div className="container">
           <DataHead 
@@ -74,7 +95,8 @@ export default class DataChart extends Component {
 
           <DataChartCols 
             cols = {dataTable.cols}
-            path = {dataTable.table.dataset_file} />
+            path = {dataTable.table.dataset_file}
+            types = {types} />
 
         </div>
       ) : (<div/>)}
